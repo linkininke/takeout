@@ -1,0 +1,51 @@
+<!--pages/message/message.wxml-->
+<view class="message-container">
+  <view class="page-title">消息通知</view>
+  
+  <!-- 消息列表 -->
+  <view class="message-list">
+    <view 
+      class="message-item {{item.readFlag === 0 ? 'unread' : ''}}" 
+      wx:for="{{messageList}}" 
+      wx:key="id"
+      bindtap="navigateToMessageDetail"
+      data-id="{{item.id}}"
+    >
+      <!-- 消息状态标记 -->
+      <view class="message-status" wx:if="{{item.readFlag === 0}}"></view>
+      
+      <!-- 消息内容 -->
+      <view class="message-content">
+        <view class="message-header">
+          <text class="message-title">{{item.title}}</text>
+          <text class="message-time">{{item.createTime}}</text>
+        </view>
+        <text class="message-desc">{{item.content}}</text>
+      </view>
+      
+      <!-- 标记已读按钮 -->
+      <view 
+        class="read-btn" 
+        wx:if="{{item.readFlag === 0}}"
+        bindtap="markAsRead"
+        data-id="{{item.id}}"
+        catchtap
+      >
+        <text>已读</text>
+      </view>
+    </view>
+    
+    <!-- 空消息提示 -->
+    <view class="empty-message" wx:if="{{messageList.length === 0 && !loading}}">
+      <text>暂无消息</text>
+    </view>
+    
+    <!-- 加载更多 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+    <view class="no-more" wx:if="{{!hasMore && messageList.length > 0}}">
+      <text>没有更多了</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<!-- index.wxml -->
+<view class="index-container">
+  <!-- 登录弹窗 -->
+  <view wx:if="{{!isLogin}}" class="login-modal">
+    <view class="login-content">
+      <view class="login-title">欢迎使用苍穹外卖</view>
+      <view class="login-desc">请授权登录，享受更多服务</view>
+      <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">微信授权登录</button>
+    </view>
+  </view>
+  
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input type="text" placeholder="搜索店铺或菜品" class="search-input" />
+    <view class="search-icon">
+      <!-- 搜索图标 -->
+      <view class="icon"></view>
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" autoplay="true" interval="5000" duration="1000" class="banner">
+    <swiper-item>
+      <!-- 轮播图1 -->
+      <view class="banner-image"></view>
+    </swiper-item>
+    <swiper-item>
+      <!-- 轮播图2 -->
+      <view class="banner-image"></view>
+    </swiper-item>
+    <swiper-item>
+      <!-- 轮播图3 -->
+      <view class="banner-image"></view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 分类导航 -->
+  <view class="category-nav">
+    <view class="category-item" wx:for="{{categories}}" wx:key="id" bindtap="navigateToShop">
+      <image src="{{item.icon}}" mode="aspectFit" class="category-icon" />
+      <text class="category-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <!-- 推荐店铺 -->
+  <view class="recommend-section">
+    <view class="section-header">
+      <text class="section-title">推荐店铺</text>
+      <text class="more">查看更多</text>
+    </view>
+    <view class="shop-list">
+      <view class="shop-item" wx:for="{{shops}}" wx:key="id" bindtap="navigateToShopDetail" data-id="{{item.id}}">
+        <image src="{{item.logo}}" mode="aspectFill" class="shop-logo" />
+        <view class="shop-info">
+          <view class="shop-name">{{item.name}}</view>
+          <view class="shop-desc">{{item.description}}</view>
+          <view class="shop-meta">
+            <text class="shop-rating">★ {{item.rating}}</text>
+            <text class="shop-distance">{{item.distance}}km</text>
+            <text class="shop-delivery">配送费 ¥{{item.deliveryFee}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

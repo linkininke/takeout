@@ -1,0 +1,69 @@
+<!--pages/shop/shop-detail.wxml-->
+<view class="shop-detail-container">
+  <!-- 店铺信息 -->
+  <view class="shop-info" wx:if="{{shopInfo}}">
+    <image class="shop-banner" src="{{shopInfo.banner || '/images/default-banner.png'}}" mode="aspectFill"></image>
+    <view class="shop-header">
+      <image class="shop-logo" src="{{shopInfo.logo || '/images/default-shop.png'}}" mode="aspectFill"></image>
+      <view class="shop-meta">
+        <text class="shop-name">{{shopInfo.name}}</text>
+        <text class="shop-rating">⭐{{shopInfo.rating}}</text>
+        <text class="shop-description">{{shopInfo.description}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 分类导航 -->
+  <scroll-view scroll-x class="category-scroll">
+    <view 
+      class="category-item {{currentCategory === index ? 'active' : ''}}" 
+      wx:for="{{categories}}" 
+      wx:key="id" 
+      data-index="{{index}}" 
+      bindtap="switchCategory"
+    >
+      <text>{{item.name}}</text>
+    </view>
+  </scroll-view>
+
+  <!-- 菜品列表 -->
+  <scroll-view scroll-y class="dish-list">
+    <view class="dish-section" wx:for="{{dishesByCategory}}" wx:key="name">
+      <view class="section-header">
+        <text class="section-title">{{item.name}}</text>
+      </view>
+      <view class="dish-items" wx:if="{{currentCategory === index}}">
+        <view class="dish-item" wx:for="{{item.items}}" wx:for-item="dish" wx:key="id">
+          <image class="dish-image" src="{{dish.image || ''}}" mode="aspectFill"></image>
+          <view class="dish-info">
+            <text class="dish-name">{{dish.name}}</text>
+            <text class="dish-description">{{dish.description}}</text>
+            <view class="dish-footer">
+              <text class="dish-price">¥{{dish.price}}</text>
+              <view class="dish-actions">
+                <view class="action-btn reduce" bindtap="reduceCart" data-id="{{dish.id}}" wx:if="{{false}}">
+                  <text>-</text>
+                </view>
+                <text class="dish-quantity" wx:if="{{false}}">0</text>
+                <view class="action-btn add" bindtap="addToCart" data-dish="{{dish}}">
+                  <text>+</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 购物车底部栏 -->
+  <view class="cart-bottom" wx:if="{{cartCount > 0}}">
+    <view class="cart-info">
+      <text class="cart-count">{{cartCount}}</text>
+      <text class="total-price">合计：¥{{totalPrice.toFixed(2)}}</text>
+    </view>
+    <view class="cart-btn" bindtap="navigateToCart">
+      <text>去结算</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,53 @@
+<!--pages/point-mall/point-mall.wxml-->
+<view class="point-mall-container">
+  <!-- 积分余额 -->
+  <view class="point-balance">
+    <view class="balance-info">
+      <text class="balance-label">我的积分</text>
+      <text class="balance-value">{{point}}</text>
+    </view>
+    <view class="exchange-record" bindtap="navigateToExchangeRecord">
+      <text>兑换记录</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+  
+  <!-- 商品列表 -->
+  <view class="goods-list">
+    <view class="section-title">积分商品</view>
+    <view class="goods-grid">
+      <view 
+        class="goods-item" 
+        wx:for="{{goodsList}}" 
+        wx:key="id"
+      >
+        <image class="goods-image" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="goods-info">
+          <text class="goods-name">{{item.name}}</text>
+          <text class="goods-desc">{{item.description}}</text>
+          <view class="goods-bottom">
+            <text class="goods-point">{{item.point}}积分</text>
+            <button 
+              class="exchange-btn" 
+              bindtap="exchangeGoods"
+              data-id="{{item.id}}"
+            >立即兑换</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 空商品提示 -->
+    <view class="empty-goods" wx:if="{{goodsList.length === 0 && !loading}}">
+      <text>暂无积分商品</text>
+    </view>
+    
+    <!-- 加载更多 -->
+    <view class="loading" wx:if="{{loading}}">
+      <text>加载中...</text>
+    </view>
+    <view class="no-more" wx:if="{{!hasMore && goodsList.length > 0}}">
+      <text>没有更多了</text>
+    </view>
+  </view>
+</view>

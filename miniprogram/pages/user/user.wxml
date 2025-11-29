@@ -1,0 +1,58 @@
+<!--pages/user/user.wxml-->
+<view class="user-container">
+  <view class="user-header">
+    <block wx:if="{{hasUserInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill"></image>
+      <view class="user-info">
+        <text class="nickname">{{userInfo.nickName}}</text>
+        <text class="user-id">用户ID: {{customer.id}}</text>
+      </view>
+    </block>
+    <block wx:else>
+      <!-- 默认头像 -->
+      <view class="avatar"></view>
+      <view class="login-btn" bindtap="getUserProfile">
+        <text>点击登录</text>
+      </view>
+    </block>
+  </view>
+
+  <view class="user-menu">
+    <view class="menu-item" bindtap="navigateToOrder">
+      <text class="menu-icon">📦</text>
+      <text class="menu-text">我的订单</text>
+      <text class="menu-arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="navigateToAddress">
+      <text class="menu-icon">🏠</text>
+      <text class="menu-text">收货地址</text>
+      <text class="menu-arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="navigateToCoupon">
+      <text class="menu-icon">🎁</text>
+      <text class="menu-text">优惠券</text>
+      <text class="menu-arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="navigateToPointMall">
+      <text class="menu-icon">⭐</text>
+      <text class="menu-text">积分商城</text>
+      <text class="menu-arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="navigateToMessage">
+      <text class="menu-icon">💬</text>
+      <text class="menu-text">消息通知</text>
+      <text class="menu-arrow">></text>
+    </view>
+    <view class="menu-item" bindtap="navigateToCustomerService">
+      <text class="menu-icon">👨‍💼</text>
+      <text class="menu-text">客服中心</text>
+      <text class="menu-arrow">></text>
+    </view>
+  </view>
+
+  <block wx:if="{{hasUserInfo}}">
+    <view class="logout-btn" bindtap="logout">
+      <text>退出登录</text>
+    </view>
+  </block>
+</view>
