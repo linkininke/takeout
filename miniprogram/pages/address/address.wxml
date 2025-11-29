@@ -1,0 +1,57 @@
+<!--pages/address/address.wxml-->
+<view class="address-container">
+  <view class="address-header">
+    <text class="header-title">收货地址</text>
+    <button class="add-btn" bindtap="navigateToAddAddress">+ 新增地址</button>
+  </view>
+  
+  <!-- 地址列表 -->
+  <view class="address-list">
+    <view 
+      class="address-item" 
+      wx:for="{{addressList}}" 
+      wx:key="id" 
+      data-id="{{item.id}}"
+      bindtap="selectAddress"
+    >
+      <!-- 地址信息 -->
+      <view class="address-info">
+        <view class="address-header-info">
+          <text class="name">{{item.name}}</text>
+          <text class="phone">{{item.phone}}</text>
+          <text class="default-tag" wx:if="{{item.isDefault}}">默认</text>
+        </view>
+        <text class="address-detail">{{item.province}}{{item.city}}{{item.district}}{{item.detail}}</text>
+      </view>
+      
+      <!-- 操作按钮 -->
+      <view class="address-actions">
+        <button 
+          class="action-btn edit-btn" 
+          size="mini" 
+          bindtap="navigateToEditAddress"
+          data-id="{{item.id}}"
+        >编辑</button>
+        <button 
+          class="action-btn default-btn" 
+          size="mini" 
+          wx:if="{{!item.isDefault}}"
+          bindtap="setDefaultAddress"
+          data-id="{{item.id}}"
+        >设为默认</button>
+        <button 
+          class="action-btn delete-btn" 
+          size="mini" 
+          bindtap="deleteAddress"
+          data-id="{{item.id}}"
+        >删除</button>
+      </view>
+    </view>
+    
+    <!-- 空地址提示 -->
+    <view class="empty-address" wx:if="{{addressList.length === 0}}">
+      <text>暂无收货地址</text>
+      <button class="add-first-btn" bindtap="navigateToAddAddress">添加收货地址</button>
+    </view>
+  </view>
+</view>

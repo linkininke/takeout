@@ -1,0 +1,97 @@
+/* pages/address/add-address.wxss */
+.add-address-container {
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20rpx;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+/* 表单样式 */
+.address-form {
+  background-color: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 表单项样式 */
+.form-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+/* 标签样式 */
+.label {
+  width: 150rpx;
+  font-size: 28rpx;
+  color: #333;
+  margin-right: 20rpx;
+}
+
+/* 输入框样式 */
+.input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  padding: 15rpx 0;
+}
+
+/* 省市区选择样式 */
+.area-select {
+  flex: 1;
+  position: relative;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 10rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 文本域样式 */
+.textarea {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  min-height: 150rpx;
+  padding: 15rpx 0;
+  line-height: 1.5;
+}
+
+/* 默认地址样式 */
+.default-item {
+  justify-content: space-between;
+}
+
+/* 提交按钮样式 */
+.submit-btn {
+  background-color: #409EFF;
+  color: white;
+  font-size: 32rpx;
+  border-radius: 8rpx;
+  padding: 20rpx 0;
+  margin: 40rpx 0;
+  border: none;
+  width: 100%;
+}
+
+.submit-btn::after {
+  border: none;
+}

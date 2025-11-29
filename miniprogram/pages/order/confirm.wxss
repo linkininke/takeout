@@ -1,0 +1,158 @@
+/* pages/order/confirm.wxss */
+.order-confirm-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding-bottom: 150rpx;
+}
+
+/* 通用section样式 */
+.section {
+  background-color: white;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+}
+
+.section-header {
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 订单信息 */
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.price {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #F56C6C;
+}
+
+/* 收货地址 */
+.address-list {
+  max-height: 400rpx;
+}
+
+.address-item {
+  padding: 20rpx;
+  margin-bottom: 15rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+  border: 2rpx solid transparent;
+}
+
+.address-item.selected {
+  border-color: #409EFF;
+  background-color: #ecf5ff;
+}
+
+.address-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+
+.consignee {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.phone {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.address-detail {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+.no-address {
+  text-align: center;
+  padding: 40rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 商品清单 */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.item-name {
+  font-size: 28rpx;
+  color: #333;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-price {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #F56C6C;
+}
+
+/* 底部支付按钮 */
+.pay-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120rpx;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.total-amount {
+  display: flex;
+  align-items: baseline;
+}
+
+.pay-btn {
+  background-color: #409EFF;
+  color: white;
+  padding: 25rpx 60rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
